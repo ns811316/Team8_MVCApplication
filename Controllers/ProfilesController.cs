@@ -9,6 +9,8 @@ using System.Web.Mvc;
 using Team8_MVCApplication.DAL;
 using Team8_MVCApplication.Models;
 
+
+
 namespace Team8_MVCApplication.Controllers
 {
     public class ProfilesController : Controller
@@ -28,6 +30,7 @@ namespace Team8_MVCApplication.Controllers
                 return View(testProfile.ToList());
             }
             return View(db.Profiles.ToList());
+
         }
 
         // GET: Profiles/Details/5

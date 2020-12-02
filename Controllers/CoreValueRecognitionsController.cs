@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
+using System.Reactive;
 using System.Web;
 using System.Web.Mvc;
 using Team8_MVCApplication.DAL;
@@ -56,11 +58,44 @@ namespace Team8_MVCApplication.Controllers
             {
                 db.CoreValueRecognitions.Add(coreValueRecognitions);
                 db.SaveChanges();
+                var firstName = coreValueRecognitions.personRecognized.profileFirstName;
+                var lastName = coreValueRecognitions.personRecognized.profileLastName;
+                var fullNameRecognizor = coreValueRecognitions.personRecognizor.fullName;
+                var email = coreValueRecognitions.personRecognized.email;
+                var msg = "Hi " + firstName + " " + lastName + ",\n\nWe wanted to notify you that your colleague, " + fullNameRecognizor + ", has recently given you a recognition.";
+                msg += "\n\nTo access the recognition, please log into our system!";
+                msg += "\n\nSincerely\nTeam 8";
+                //notification += "<br/>" + firstName + " " + lastName + " at " + email;
+                MailMessage myMessage = new MailMessage();
+                MailAddress from = new MailAddress("nnjstull@gmail.com", "SysAdmin");
+                myMessage.From = from;
+                myMessage.To.Add(email);
+                myMessage.Subject = "Recent recognition";
+                myMessage.Body = msg;
+                try
+                {
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = "nnjstull.gmail.com";
+                    smtp.Port = 587;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new System.Net.NetworkCredential("nnjstull@gmail.com", "An7igua@2095");
+                    smtp.EnableSsl = true;
+                    smtp.Send(myMessage);
+                    TempData["mailError"] = "";
+
+                }
+                catch (Exception ex)
+                {
+
+                    TempData["mailError"] = ex.Message;
+                    return View("mailError");
+                }
+
                 return RedirectToAction("Index");
             }
 
-            ViewBag.recognized = new SelectList(db.Profiles, "ProfileId", "profileFirstName", coreValueRecognitions.recognized);
-            ViewBag.recognizor = new SelectList(db.Profiles, "ProfileId", "profileFirstName", coreValueRecognitions.recognizor);
+            ViewBag.recognized = new SelectList(db.Profiles, "ProfileId", "fullName", coreValueRecognitions.recognized);
+            ViewBag.recognizor = new SelectList(db.Profiles, "ProfileId", "fullName", coreValueRecognitions.recognizor);
             return View(coreValueRecognitions);
         }
 
