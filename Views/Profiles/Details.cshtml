@@ -1,4 +1,4 @@
-﻿@model Team8_MVCApplication.Models.Profile
+﻿@model  IEnumerable<Team8_MVCApplication.Models.Profile>
 
 @{
     ViewBag.Title = "Details";
@@ -68,24 +68,7 @@
 
     </dl>
 </div>
-
-@{ 
-    var profileID = Model.ProfileId;  //get the profile ID
-    // then make a list of all the recommendations 
-    var recognition = Model.BeingRecognized;
-
-}
-
-
-
-
-
-
-
-
-
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ProfileId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
-

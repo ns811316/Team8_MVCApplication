@@ -43,7 +43,7 @@ namespace Team8_MVCApplication.Controllers
             {
                 return HttpNotFound();
             }
-            return View(profile);
+            return View(profile.ToList());
         }
 
         // GET: Profiles/Create

@@ -243,7 +243,7 @@
     <Content Include="Views\Home\CoreValues.cshtml" />
     <Content Include="Views\Profiles\Create.cshtml" />
     <Content Include="Views\Profiles\Delete.cshtml" />
-    <Content Include="Views\Profiles\Details.cshtml" />
+    <Content Include="Views\Profiles\OriginalDetails.cshtml" />
     <Content Include="Views\Profiles\Edit.cshtml" />
     <Content Include="Views\Profiles\Index.cshtml" />
     <Content Include="Views\CoreValueRecognitions\Create.cshtml" />
@@ -251,6 +251,7 @@
     <Content Include="Views\CoreValueRecognitions\Details.cshtml" />
     <Content Include="Views\CoreValueRecognitions\Edit.cshtml" />
     <Content Include="Views\CoreValueRecognitions\Index.cshtml" />
+    <Content Include="Views\Profiles\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
