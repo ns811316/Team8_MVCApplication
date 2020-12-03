@@ -50,6 +50,7 @@ namespace Team8_MVCApplication.Controllers
         }
 
         // GET: Profiles/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -115,6 +116,7 @@ namespace Team8_MVCApplication.Controllers
         }
 
         // GET: Profiles/Delete/5
+        [Authorize]
         public ActionResult Delete(Guid? id)
         {
             if (id == null)

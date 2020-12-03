@@ -25,6 +25,7 @@ namespace Team8_MVCApplication.Controllers
         }
 
         // GET: CoreValueRecognitions/Details/5
+        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,6 +41,7 @@ namespace Team8_MVCApplication.Controllers
         }
 
         // GET: CoreValueRecognitions/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.recognized = new SelectList(db.Profiles, "ProfileId", "profileFirstName");
@@ -102,6 +104,7 @@ namespace Team8_MVCApplication.Controllers
         }
 
         // GET: CoreValueRecognitions/Edit/5
+        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -137,6 +140,7 @@ namespace Team8_MVCApplication.Controllers
         }
 
         // GET: CoreValueRecognitions/Delete/5
+        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)

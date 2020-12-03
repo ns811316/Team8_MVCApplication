@@ -69,7 +69,7 @@
     </dl>
 </div>
 
-@{ 
+@{
     var id = Model.ProfileId;
     Team8_MVCApplication.DAL.Team8_MVCApplication_Context db = new Team8_MVCApplication.DAL.Team8_MVCApplication_Context();
     var recognition = db.CoreValueRecognitions.Where(p => p.personRecognized.ProfileId == id);
@@ -89,15 +89,77 @@
     var stewardshipCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Stewardship).Count();
 }
 
-<h2>Total recognitions received = @totalCnt</h2>
-<h3>Excellence awards = @excellentCnt</h3>
-<h3>Balance awards = @balanceCnt</h3>
-<h3>Integrity awards = @integrityCnt</h3>
-<h3>Culture awards = @acceptingCnt</h3>
-<h3>Passion awards = @passionCnt</h3>
-<h3>Stewardship awards = @stewardshipCnt</h3>
-<h3>Balance awards = @balanceCnt</h3>
-}
+<div class="container">
+    <h2>Recognition Details</h2>
+    <p>The table shows the combined awards given:</p>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Recognition</th>
+                <th># of Awards</th>
+                @*<th>Information about the Recognition</th>*@
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Balance Awards</td>
+                <td>@balanceCnt</td>
+                @*<td>
+                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
+                    <div id="demo" class="collapse">
+                      
+                    </div>
+                </td>*@
+            </tr>
+            <tr>
+                <td>Culture Awards</td>
+                <td>@acceptingCnt</td>
+            </tr>
+            <tr>
+                <td>Excellence Awards</td>
+                <td>@excellentCnt</td>
+            </tr>
+
+            <tr>
+                <td>Innovative Awards</td>
+                <td>@innovativeCnt</td>
+            </tr>
+            <tr>
+                <td>Integrity Awards</td>
+                <td>@integrityCnt</td>
+            </tr>
+            <tr>
+                <td>Passion Awards</td>
+                <td>@passionCnt</td>
+            </tr>
+            <tr>
+                <td>Stewardship Awards</td>
+                <td>@stewardshipCnt</td>
+            </tr>
+        </tbody>
+        <thead>
+            <tr>
+                <th>Total Recognitions</th>
+                <th>@totalCnt</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+
+
+
+
+
+
+@*<h2>Total recognitions received = @totalCnt</h2>
+    <h3>Excellence awards = @excellentCnt</h3>
+    <h3>Balance awards = @balanceCnt</h3>
+    <h3>Integrity awards = @integrityCnt</h3>
+    <h3>Culture awards = @acceptingCnt</h3>
+    <h3>Passion awards = @passionCnt</h3>
+    <h3>Stewardship awards = @stewardshipCnt</h3>
+    <h3>innovative awards = @innovativeCnt</h3>*@
+
 
 
 
