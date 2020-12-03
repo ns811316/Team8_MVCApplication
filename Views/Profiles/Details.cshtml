@@ -1,13 +1,13 @@
-﻿@model  IEnumerable<Team8_MVCApplication.Models.Profile>
+﻿@model Team8_MVCApplication.Models.Profile
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2>Profile Details</h2>
 
 <div>
-    <h4>Profile</h4>
+    <h4>Full Detail</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -68,7 +68,47 @@
 
     </dl>
 </div>
+
+@{ 
+    var id = Model.ProfileId;
+    Team8_MVCApplication.DAL.Team8_MVCApplication_Context db = new Team8_MVCApplication.DAL.Team8_MVCApplication_Context();
+    var recognition = db.CoreValueRecognitions.Where(p => p.personRecognized.ProfileId == id);
+}
+
+
+
+@{
+    var Recognition = Model.BeingRecognized;
+    var totalCnt = recognition.Count(); // counts all the recognitions for that person
+    var excellentCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Excellence).Count();
+    var balanceCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Balance).Count();
+    var innovativeCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Innovative).Count();
+    var acceptingCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Accepting).Count();
+    var integrityCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Integrity).Count();
+    var passionCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Passion).Count();
+    var stewardshipCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Stewardship).Count();
+}
+
+<h2>Total recognitions received = @totalCnt</h2>
+<h3>Excellence awards = @excellentCnt</h3>
+<h3>Balance awards = @balanceCnt</h3>
+<h3>Integrity awards = @integrityCnt</h3>
+<h3>Culture awards = @acceptingCnt</h3>
+<h3>Passion awards = @passionCnt</h3>
+<h3>Stewardship awards = @stewardshipCnt</h3>
+<h3>Balance awards = @balanceCnt</h3>
+}
+
+
+
+
+
+
+
+
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ProfileId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+

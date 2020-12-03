@@ -41,12 +41,12 @@ namespace Team8_MVCApplication.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var profile = db.Profiles.Where(p => p.ProfileId == id).Include(p => p.BeingRecognized);
+            Profile profile = db.Profiles.Find(id);
             if (profile == null)
             {
                 return HttpNotFound();
             }
-            return View(profile.ToList());
+            return View(profile);
         }
 
         // GET: Profiles/Create

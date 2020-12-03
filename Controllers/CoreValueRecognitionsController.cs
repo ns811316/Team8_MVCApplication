@@ -58,10 +58,12 @@ namespace Team8_MVCApplication.Controllers
             {
                 db.CoreValueRecognitions.Add(coreValueRecognitions);
                 db.SaveChanges();
-                var firstName = coreValueRecognitions.personRecognized.profileFirstName;
-                var lastName = coreValueRecognitions.personRecognized.profileLastName;
-                var fullNameRecognizor = coreValueRecognitions.personRecognizor.fullName;
-                var email = coreValueRecognitions.personRecognized.email;
+                var recognizor = db.Profiles.Find(coreValueRecognitions.recognizor);
+                var profile = db.Profiles.Find(coreValueRecognitions.recognized);
+                var firstName = profile.profileFirstName;
+                var lastName = profile.profileLastName;
+                var fullNameRecognizor = recognizor.fullName;
+                var email = profile.email;
                 var msg = "Hi " + firstName + " " + lastName + ",\n\nWe wanted to notify you that your colleague, " + fullNameRecognizor + ", has recently given you a recognition.";
                 msg += "\n\nTo access the recognition, please log into our system!";
                 msg += "\n\nSincerely\nTeam 8";
@@ -75,14 +77,14 @@ namespace Team8_MVCApplication.Controllers
                 try
                 {
                     SmtpClient smtp = new SmtpClient();
-                    smtp.Host = "nnjstull.gmail.com";
+                    smtp.Host = "smtp.gmail.com";
                     smtp.Port = 587;
                     smtp.UseDefaultCredentials = false;
                     smtp.Credentials = new System.Net.NetworkCredential("nnjstull@gmail.com", "An7igua@2095");
                     smtp.EnableSsl = true;
-                    smtp.Send(myMessage);
-                    TempData["mailError"] = "";
-
+                    //smtp.Send(myMessage);
+                    TempData["mailError"] = msg;
+                    return View("mailError");
                 }
                 catch (Exception ex)
                 {
