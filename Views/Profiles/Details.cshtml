@@ -81,13 +81,21 @@
     var Recognition = Model.BeingRecognized;
     var totalCnt = recognition.Count(); // counts all the recognitions for that person
     var excellentCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Excellence).Count();
+    var excellentRec = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Excellence);
     var balanceCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Balance).Count();
+    var balanceRec = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Balance);
     var innovativeCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Innovative).Count();
+    var innovativeRec = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Innovative);
     var acceptingCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Accepting).Count();
+    var acceptingRec = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Accepting);
     var integrityCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Integrity).Count();
+    var integrityRec = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Integrity);
     var passionCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Passion).Count();
+    var passionRec = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Passion);
     var stewardshipCnt = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Stewardship).Count();
+    var stewardshipRec = recognition.Where(r => r.award == Team8_MVCApplication.Models.CoreValueRecognitions.CoreValue.Stewardship);
 }
+
 
 <div class="container">
     <h2>Recognition Details</h2>
@@ -97,44 +105,123 @@
             <tr>
                 <th>Recognition</th>
                 <th># of Awards</th>
-                @*<th>Information about the Recognition</th>*@
+                <th>Information about the Recognition</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td>Balance Awards</td>
                 <td>@balanceCnt</td>
-                @*<td>
-                    <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
-                    <div id="demo" class="collapse">
-                      
-                    </div>
-                </td>*@
+                <td>
+                    @{
+                        if (balanceCnt > 0)
+                        {
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
+                            <div id="demo" class="collapse">
+                                @Html.Partial("_coreValues", balanceRec)
+                            </div>
+                        }
+                    }
+
+                </td>
             </tr>
             <tr>
                 <td>Culture Awards</td>
                 <td>@acceptingCnt</td>
+                <td>
+                    @{
+                        if (acceptingCnt > 0)
+                        {
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
+                            <div id="demo" class="collapse">
+                                @Html.Partial("_coreValues", acceptingRec)
+                            </div>
+                        }
+                    }
+
+                </td>
             </tr>
             <tr>
                 <td>Excellence Awards</td>
                 <td>@excellentCnt</td>
+                <td>
+                    @{
+                        if (excellentCnt > 0)
+                        {
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
+                            <div id="demo" class="collapse">
+                                @Html.Partial("_coreValues", excellentRec)
+                            </div>
+                        }
+                    }
+
+                </td>
             </tr>
 
             <tr>
                 <td>Innovative Awards</td>
                 <td>@innovativeCnt</td>
+                <td>
+                    @{
+                        if (innovativeCnt > 0)
+                        {
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
+                            <div id="demo" class="collapse">
+                                @Html.Partial("_coreValues", innovativeRec)
+                            </div>
+                        }
+                    }
+
+                </td>
             </tr>
+
             <tr>
                 <td>Integrity Awards</td>
                 <td>@integrityCnt</td>
+                <td>
+                    @{
+                        if (integrityCnt > 0)
+                        {
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
+                            <div id="demo" class="collapse">
+                                @Html.Partial("_coreValues", integrityRec)
+                            </div>
+                        }
+                    }
+
+                </td>
             </tr>
             <tr>
                 <td>Passion Awards</td>
                 <td>@passionCnt</td>
+                <td>
+                    @{
+                        if (passionCnt > 0)
+                        {
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
+                            <div id="demo" class="collapse">
+                                @Html.Partial("_coreValues", passionRec)
+                            </div>
+                        }
+                    }
+
+                </td>
             </tr>
             <tr>
                 <td>Stewardship Awards</td>
                 <td>@stewardshipCnt</td>
+                <td>
+                    @{
+                        if (stewardshipCnt > 0)
+                        {
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
+                            <div id="demo" class="collapse">
+                                @Html.Partial("_coreValues", stewardshipRec)
+                            </div>
+                        }
+                    }
+
+                </td>
             </tr>
         </tbody>
         <thead>

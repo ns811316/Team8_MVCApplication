@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Team8_MVCApplication.Models.CoreValueRecognitions>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Recognized By
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.personRecognizor.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.recognizationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+
+    </tr>
+
+@foreach (var item in Model)
+{
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.personRecognizor.fullName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.personRecognizor.email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.recognizationDate)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Comments)
+    </td>
+
+</tr>
+}
+
+</table>

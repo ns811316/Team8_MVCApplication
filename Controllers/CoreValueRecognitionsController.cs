@@ -95,7 +95,7 @@ namespace Team8_MVCApplication.Controllers
                     return View("mailError");
                 }
 
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
             }
 
             ViewBag.recognized = new SelectList(db.Profiles, "ProfileId", "fullName", coreValueRecognitions.recognized);

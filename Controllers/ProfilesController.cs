@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using Team8_MVCApplication.DAL;
 using Team8_MVCApplication.Models;
-
+using PagedList;
 
 
 namespace Team8_MVCApplication.Controllers
@@ -18,18 +18,30 @@ namespace Team8_MVCApplication.Controllers
         private Team8_MVCApplication_Context db = new Team8_MVCApplication_Context();
 
         // GET: Profiles
-        public ActionResult Index(string searchString)
+        public ActionResult Index(string searchString, int? page)
         {
+            ////var pgNumber = page ?? 1;
+            ////var onePageOfRecs = selectRecs.ToPagedList(pgNumber, 10);
+            ////ViewBag.OnePageOfRecs = onePageOfRecs;
+            ////return View();
+
+            //int pgSize = 10;
+            //int pageNumber = (page ?? 1);
+            //var profileList = Profile.ToPagedList(pageNumber, pgSize);
+            //return View(PagedList);
             var testProfile = from u in db.Profiles select u;
             if (!String.IsNullOrEmpty(searchString))
             {
-                testProfile = testProfile.Where(u =>
-                u.profileLastName.Contains(searchString)
-                   || u.profileFirstName.Contains(searchString));
+                testProfile = testProfile.Where(u =>u.profileLastName.Contains(searchString)|| u.profileFirstName.Contains(searchString));
                 // if here, users were found so view them
                 return View(testProfile.ToList());
             }
             return View(db.Profiles.ToList());
+            
+            
+            
+            
+            
 
         }
 
