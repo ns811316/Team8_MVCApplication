@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -44,8 +45,10 @@ namespace Team8_MVCApplication.Controllers
         [Authorize]
         public ActionResult Create()
         {
-            ViewBag.recognized = new SelectList(db.Profiles, "ProfileId", "profileFirstName");
-            ViewBag.recognizor = new SelectList(db.Profiles, "ProfileId", "profileFirstName");
+            SelectList members = new SelectList(db.Profiles, "ProfileId", "fullName");
+            string memberID = User.Identity.GetUserId();
+            members = new SelectList(members.Where(x => x.Value != memberID).ToList(), "Value", "Text");
+            ViewBag.recognized = members;
             return View();
         }
 
@@ -58,6 +61,10 @@ namespace Team8_MVCApplication.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                Guid memberID;
+                Guid.TryParse(User.Identity.GetUserId(), out memberID);
+                coreValueRecognitions.recognizor = memberID;
                 db.CoreValueRecognitions.Add(coreValueRecognitions);
                 db.SaveChanges();
                 var recognizor = db.Profiles.Find(coreValueRecognitions.recognizor);
@@ -99,7 +106,7 @@ namespace Team8_MVCApplication.Controllers
             }
 
             ViewBag.recognized = new SelectList(db.Profiles, "ProfileId", "fullName", coreValueRecognitions.recognized);
-            ViewBag.recognizor = new SelectList(db.Profiles, "ProfileId", "fullName", coreValueRecognitions.recognizor);
+  
             return View(coreValueRecognitions);
         }
 
@@ -116,8 +123,9 @@ namespace Team8_MVCApplication.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.recognized = new SelectList(db.Profiles, "ProfileId", "profileFirstName", coreValueRecognitions.recognized);
-            ViewBag.recognizor = new SelectList(db.Profiles, "ProfileId", "profileFirstName", coreValueRecognitions.recognizor);
+           
+            ViewBag.recognized = new SelectList(db.Profiles, "ProfileId", "fullName", coreValueRecognitions.recognized);
+            ViewBag.recognizor = new SelectList(db.Profiles, "ProfileId", "fullName", coreValueRecognitions.recognizor);
             return View(coreValueRecognitions);
         }
 

@@ -3,7 +3,11 @@
     ViewBag.Title = "mailError";
 }
 
-<h2>mailError</h2>
+<h2>Mail Error</h2>
 
-error = @TempData["mailError"].ToString();
+Google recently upgraded their security. Here is the message that would be sent to the user:
+<br />
+@TempData["mailError"].ToString();
+
+@Html.ActionLink("Return to home", "index", "CoreValueRecognitions")
 

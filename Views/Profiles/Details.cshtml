@@ -4,10 +4,10 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Profile Details</h2>
+<h2>Profile Page</h2>
 
 <div>
-    <h4>Full Detail</h4>
+    <h4>Details</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -132,8 +132,8 @@
                     @{
                         if (acceptingCnt > 0)
                         {
-                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
-                            <div id="demo" class="collapse">
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo1">Details</button>
+                            <div id="demo1" class="collapse">
                                 @Html.Partial("_coreValues", acceptingRec)
                             </div>
                         }
@@ -148,8 +148,8 @@
                     @{
                         if (excellentCnt > 0)
                         {
-                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
-                            <div id="demo" class="collapse">
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo2">Details</button>
+                            <div id="demo2" class="collapse">
                                 @Html.Partial("_coreValues", excellentRec)
                             </div>
                         }
@@ -165,8 +165,8 @@
                     @{
                         if (innovativeCnt > 0)
                         {
-                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
-                            <div id="demo" class="collapse">
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo3">Details</button>
+                            <div id="demo3" class="collapse">
                                 @Html.Partial("_coreValues", innovativeRec)
                             </div>
                         }
@@ -182,8 +182,8 @@
                     @{
                         if (integrityCnt > 0)
                         {
-                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
-                            <div id="demo" class="collapse">
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo4">Details</button>
+                            <div id="demo4" class="collapse">
                                 @Html.Partial("_coreValues", integrityRec)
                             </div>
                         }
@@ -198,8 +198,8 @@
                     @{
                         if (passionCnt > 0)
                         {
-                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
-                            <div id="demo" class="collapse">
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo5">Details</button>
+                            <div id="demo5" class="collapse">
                                 @Html.Partial("_coreValues", passionRec)
                             </div>
                         }
@@ -214,8 +214,8 @@
                     @{
                         if (stewardshipCnt > 0)
                         {
-                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo">Details</button>
-                            <div id="demo" class="collapse">
+                            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo6">Details</button>
+                            <div id="demo6" class="collapse">
                                 @Html.Partial("_coreValues", stewardshipRec)
                             </div>
                         }

@@ -268,6 +268,8 @@
     <Content Include="Views\CoreValueRecognitions\Index.cshtml" />
     <Content Include="Views\CoreValueRecognitions\mailError.cshtml" />
     <Content Include="Views\Profiles\_coreValues.cshtml" />
+    <Content Include="Views\Profiles\DuplicateUser.cshtml" />
+    <Content Include="Views\Profiles\NotAuthenticated.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
